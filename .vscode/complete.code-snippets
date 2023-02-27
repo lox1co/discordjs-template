@@ -1,0 +1,7 @@
+{
+  "reply interaction": {
+    "scope": "typescript",
+    "prefix": "reply",
+    "body": "interaction.reply({ content: \"$1\"});$0"
+  }
+}

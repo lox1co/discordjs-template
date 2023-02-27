@@ -1,0 +1,43 @@
+{
+  "create a basic command": {
+    "scope": "typescript",
+    "prefix": "basecommand",
+    "body": [
+      "import Client, { Command } from \"../../client\";",
+      "import { ChatInputCommandInteraction } from \"../../client/types\";",
+      "",
+      "export default class ${1/^(.)(.*)$/${1:/upcase}${2}/}Command extends Command {",
+      "  constructor(client: Client) {",
+      "    super(client, (data) => data.setName(\"$1\").setDescription(\"${1/^(.)(.*)$/${1:/upcase}${2}/} command\"));",
+      "  }",
+      "",
+      "  run(interaction: ChatInputCommandInteraction) {",
+      "    $0",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+
+  "create a basic event": {
+    "scope": "typescript",
+    "prefix": "baseevent",
+    "body": [
+      "import { Events } from \"discord.js\";",
+      "import Client, { Event } from \"../../client\";",
+      "",
+      "export default class ${1/^(.)(.*)$/${1:/upcase}${2}/}Event extends Event {",
+      "  constructor(client: Client) {",
+      "    super(client, {",
+      "      name: Events.$2",
+      "    });",
+      "  }",
+      "",
+      "  run() {",
+      "    $0",
+      "  }",
+      "}",
+      ""
+    ]
+  }
+}

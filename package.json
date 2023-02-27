@@ -1,0 +1,37 @@
+{
+  "name": "discordjs-template",
+  "version": "1.0.0",
+  "description": "base template for discord bot in typescript",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "set NODE_ENV=develompent&&ts-node-dev src/index.ts",
+    "build": "tsc",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "discord",
+    "discord.js",
+    "typescript",
+    "ts",
+    "bot",
+    "template"
+  ],
+  "author": "loxico",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "eslint": "^8.35.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.8.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  }
+}

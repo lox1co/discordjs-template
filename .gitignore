@@ -1,7 +1,5 @@
 *.log
-*.sqlite
 
-dist/
 node_modules/
 
 .env

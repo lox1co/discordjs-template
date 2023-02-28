@@ -1,7 +1,17 @@
 {
   "reply interaction": {
-    "scope": "typescript",
+    "scope": "javascript",
     "prefix": "reply",
     "body": "interaction.reply({ content: \"$1\"});$0"
+  },
+  "require propertie": {
+    "scope": "javascript",
+    "prefix": "req",
+    "body": "const { $2 } = require(\"${1:module}\");$0"
+  },
+  "require module": {
+    "scope": "javascript",
+    "prefix": "rq",
+    "body": "const ${2:$1} = require(\"${1:module}\");$0"
   }
 }

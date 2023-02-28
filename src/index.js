@@ -1,7 +1,7 @@
-import * as dotenv from "dotenv";
+const dotenv = require("dotenv");
 
-import { GatewayIntentBits, Partials } from "discord.js";
-import Client from "./client";
+const { GatewayIntentBits, Partials } = require("discord.js");
+const Client = require("./client");
 
 dotenv.config();
 

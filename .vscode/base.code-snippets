@@ -1,17 +1,16 @@
 {
   "create a basic command": {
-    "scope": "typescript",
+    "scope": "javascript",
     "prefix": "basecommand",
     "body": [
-      "import Client, { Command } from \"../../client\";",
-      "import { ChatInputCommandInteraction } from \"../../client/types\";",
+      "const { Command } = require(\"../../client\");",
       "",
-      "export default class ${1/^(.)(.*)$/${1:/upcase}${2}/}Command extends Command {",
-      "  constructor(client: Client) {",
+      "module.exports = class ${1/^(.)(.*)$/${1:/upcase}${2}/}Command extends Command {",
+      "  constructor(client) {",
       "    super(client, (data) => data.setName(\"$1\").setDescription(\"${1/^(.)(.*)$/${1:/upcase}${2}/} command\"));",
       "  }",
       "",
-      "  run(interaction: ChatInputCommandInteraction) {",
+      "  run(interaction) {",
       "    $0",
       "  }",
       "}",
@@ -20,14 +19,14 @@
   },
 
   "create a basic event": {
-    "scope": "typescript",
+    "scope": "javascript",
     "prefix": "baseevent",
     "body": [
-      "import { Events } from \"discord.js\";",
-      "import Client, { Event } from \"../../client\";",
+      "const{ Events } = require(\"discord.js\");",
+      "const { Event } = require(\"../../client\");",
       "",
-      "export default class ${1/^(.)(.*)$/${1:/upcase}${2}/}Event extends Event {",
-      "  constructor(client: Client) {",
+      "module.exports = class ${1/^(.)(.*)$/${1:/upcase}${2}/}Event extends Event {",
+      "  constructor(client) {",
       "    super(client, {",
       "      name: Events.$2",
       "    });",

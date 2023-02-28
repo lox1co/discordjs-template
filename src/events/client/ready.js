@@ -1,28 +1,27 @@
-import { ActivityType, REST, Routes, Events, version, type ActivityOptions } from "discord.js";
+const { ActivityType, REST, Routes, Events, version } = require("discord.js");
 
-import type Client from "../../client";
-import { Event } from "../../client";
+const { Event } = require("../../client");
 
-export default class ReadyEvent extends Event {
-  constructor(client: Client) {
+module.exports = class ReadyEvent extends Event {
+  constructor(client) {
     super(client, {
       name: Events.ClientReady,
       once: true
     });
   }
 
-  run(): void {
+  run() {
     console.info(`[Bot] Logged in as ${this.client.user?.tag}`);
     this.activity();
     this.postSlashCommands();
   }
 
-  activity(): void {
+  activity() {
     const guilds = this.client.guilds.cache;
     const memberCount = guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
     const djsVersion = version.split(".")[0];
 
-    const activities: ActivityOptions[] = [
+    const activities = [
       { name: `${guilds.size} Servers`, type: ActivityType.Listening },
       { name: `${this.client.channels.cache.size} Channels`, type: ActivityType.Playing },
       { name: `${memberCount} Users`, type: ActivityType.Watching },
@@ -36,7 +35,7 @@ export default class ReadyEvent extends Event {
     }, 5e3);
   }
 
-  async postSlashCommands(): Promise<void> {
+  async postSlashCommands() {
     await new Promise(() => {
       const rest = new REST({ version: "10" }).setToken(String(process.env.TOKEN));
       try {
@@ -45,8 +44,8 @@ export default class ReadyEvent extends Event {
         rest.put(Routes.applicationCommands(String(this.client.user?.id)), { body: allCommands });
         console.log("[Commands] reloaded");
       } catch (err) {
-        console.error({ error: "error updating commands", description: (err as Error).stack });
+        console.error({ error: "error updating commands", description: err.stack });
       }
     });
   }
-}
+};

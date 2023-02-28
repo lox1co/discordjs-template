@@ -3,7 +3,8 @@ name: "Eslint"
 on:
   push:
     branches:
-      - javascript
+      - main
+      -javascript
 
 jobs:
   redundant_builds:

@@ -1,8 +1,8 @@
 const { ActivityType, REST, Routes, Events, version } = require("discord.js");
 
-const { Event } = require("../../client");
+const { BaseEvent } = require("../../client");
 
-module.exports = class ReadyEvent extends Event {
+module.exports = class extends BaseEvent {
   constructor(client) {
     super(client, {
       name: Events.ClientReady,

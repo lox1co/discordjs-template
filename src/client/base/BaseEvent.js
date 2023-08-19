@@ -1,4 +1,4 @@
-module.exports = class Event {
+module.exports = class BaseEvent {
   constructor(_DiscordClient, _options) {
     this._DiscordClient = _DiscordClient;
     this._options = _options;

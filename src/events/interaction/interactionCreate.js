@@ -1,7 +1,7 @@
 const { Events } = require("discord.js");
-const { Event } = require("../../client");
+const { BaseEvent } = require("../../client");
 
-module.exports = class InteractionCreateEvent extends Event {
+module.exports = class extends BaseEvent {
   constructor(client) {
     super(client, {
       name: Events.InteractionCreate

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 
-module.exports = class Command {
+module.exports = class BaseCommand {
   constructor(_DiscordClient, _data) {
     this._DiscordClient = _DiscordClient;
     this._data = _data;

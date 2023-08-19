@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const root = path.join(process.cwd(), "src");
+const root = path.join(__dirname, "..");
 
 function getFiles(dir) {
   const filePath = path.join(root, dir);
@@ -20,9 +20,6 @@ function registryCommands(client) {
     const command = new Command(client);
     client.commands.set(command.name, command);
   }
-
-  if (client.commands.size === 0) console.info("[Commands (/)] - 0");
-  else console.log("[Commands] Loaded");
 }
 
 function registryEvents(client) {
@@ -33,8 +30,6 @@ function registryEvents(client) {
     const onOrOnce = event.once ? "once" : "on";
     client[onOrOnce](event.name, (...args) => event.run(...args));
   }
-
-  console.log("[Events] Loaded");
 }
 
 module.exports = { registryCommands, registryEvents };

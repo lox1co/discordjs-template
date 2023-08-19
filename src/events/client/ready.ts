@@ -1,9 +1,9 @@
 import { ActivityType, REST, Routes, Events, version, type ActivityOptions } from "discord.js";
 
 import type Client from "../../client";
-import { Event } from "../../client";
+import { BaseEvent } from "../../client";
 
-export default class ReadyEvent extends Event {
+export default class extends BaseEvent {
   constructor(client: Client) {
     super(client, {
       name: Events.ClientReady,

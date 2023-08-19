@@ -1,11 +1,11 @@
 import { Events } from "discord.js";
 
 import type Client from "../../client";
-import { Event } from "../../client";
+import { BaseEvent } from "../../client";
 
 import { type ChatInputCommandInteraction } from "../../client/types";
 
-export default class InteractionCreateEvent extends Event {
+export default class extends BaseEvent {
   constructor(client: Client) {
     super(client, {
       name: Events.InteractionCreate

@@ -2,7 +2,7 @@ import type DiscordClient from "..";
 
 import { type BaseEventOptions } from "../types";
 
-export abstract class Event {
+export abstract class BaseEvent {
   constructor(private readonly _DiscordClient: DiscordClient, private readonly _options: BaseEventOptions) {}
 
   public get name(): string {

@@ -4,7 +4,7 @@ import type DiscordClient from "..";
 import { type CommandOptions } from "../types";
 
 const defaultOptions = { private: false };
-export abstract class Command {
+export abstract class BaseCommand {
   constructor(
     private readonly _DiscordClient: DiscordClient,
     private readonly _data: (data: SlashCommandBuilder) => SlashCommandBuilder | any,

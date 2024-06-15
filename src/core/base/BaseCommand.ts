@@ -1,12 +1,11 @@
 import { type ChatInputCommandInteraction, type InteractionResponse, SlashCommandBuilder } from "discord.js";
-
-import type DiscordClient from "..";
+import { type Client } from "..";
 import { type CommandOptions } from "../types";
 
 const defaultOptions = { private: false };
 export abstract class BaseCommand {
   constructor(
-    private readonly _DiscordClient: DiscordClient,
+    private readonly _DiscordClient: Client,
     private readonly _data: (data: SlashCommandBuilder) => SlashCommandBuilder | any,
     private readonly _options: CommandOptions = defaultOptions
   ) {}
@@ -19,7 +18,7 @@ export abstract class BaseCommand {
     return this._data(new SlashCommandBuilder());
   }
 
-  public get client(): DiscordClient {
+  public get client(): Client {
     return this._DiscordClient;
   }
 

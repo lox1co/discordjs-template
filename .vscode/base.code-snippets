@@ -3,9 +3,8 @@
     "scope": "typescript",
     "prefix": "basecommand",
     "body": [
-      "import type Client from \"../../client\";",
-      "import { BaseCommand } from \"../../client\";",
-      "import { type ChatInputCommandInteraction } from \"../../client/types\";",
+      "import { type Client, BaseCommand } from \"../../core\";",
+      "import { type ChatInputCommandInteraction } from \"../../core/types\";",
       "",
       "export default class extends BaseCommand {",
       "  constructor(client: Client) {",
@@ -25,8 +24,7 @@
     "prefix": "baseevent",
     "body": [
       "import { Events } from \"discord.js\";",
-      "import type Client from \"../../client\";",
-      "import { BaseEvent } from \"../../client\";",
+      "import { type Client, BaseEvent } from \"../../core\";",
       "",
       "export default class extends BaseEvent {",
       "  constructor(client: Client) {",

@@ -1,7 +1,5 @@
-import { ActivityType, REST, Routes, Events, version, type ActivityOptions } from "discord.js";
-
-import type Client from "../../client";
-import { BaseEvent } from "../../client";
+import { type ActivityOptions, ActivityType, Events, version } from "discord.js";
+import { type Client, BaseEvent } from "../../core";
 
 export default class extends BaseEvent {
   constructor(client: Client) {
@@ -14,7 +12,6 @@ export default class extends BaseEvent {
   run(): void {
     console.info(`[Bot] Logged in as ${this.client.user?.tag}`);
     this.activity();
-    this.postSlashCommands();
   }
 
   activity(): void {
@@ -34,19 +31,5 @@ export default class extends BaseEvent {
       this.client.user?.setActivity(activities[i]);
       i++;
     }, 5e3);
-  }
-
-  async postSlashCommands(): Promise<void> {
-    await new Promise(() => {
-      const rest = new REST({ version: "10" }).setToken(String(process.env.TOKEN));
-      try {
-        console.log("[Commands] refreshing");
-        const allCommands = this.client.commands.map((c) => c.data.toJSON());
-        rest.put(Routes.applicationCommands(String(this.client.user?.id)), { body: allCommands });
-        console.log("[Commands] reloaded");
-      } catch (err) {
-        console.error({ error: "error updating commands", description: (err as Error).stack });
-      }
-    });
   }
 }

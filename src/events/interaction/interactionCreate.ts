@@ -1,9 +1,6 @@
 import { Events } from "discord.js";
-
-import type Client from "../../client";
-import { BaseEvent } from "../../client";
-
-import { type ChatInputCommandInteraction } from "../../client/types";
+import { type Client, BaseEvent } from "../../core";
+import { type ChatInputCommandInteraction } from "../../core/types";
 
 export default class extends BaseEvent {
   constructor(client: Client) {
@@ -15,10 +12,7 @@ export default class extends BaseEvent {
   async run(interaction: ChatInputCommandInteraction): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
-    interaction.guild.config = this.client.config.default;
-
     const command = this.client.commands.get(interaction.commandName);
-
     if (command === undefined) return;
 
     try {

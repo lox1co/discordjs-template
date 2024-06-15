@@ -1,8 +1,6 @@
 import { type InteractionResponse } from "discord.js";
-
-import type Client from "../../client";
-import { BaseCommand } from "../../client";
-import { type ChatInputCommandInteraction } from "../../client/types";
+import { type Client, BaseCommand } from "../../core";
+import { type ChatInputCommandInteraction } from "../../core/types";
 
 export default class extends BaseCommand {
   constructor(client: Client) {

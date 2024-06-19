@@ -10,4 +10,4 @@ node_modules/
 .env.production.local
 .env.local
 
-src/commands/developer/eval.txt
+src/commands/developer/

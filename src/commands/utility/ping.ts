@@ -8,6 +8,9 @@ export default class extends BaseCommand {
   }
 
   async run(interaction: ChatInputCommandInteraction): Promise<InteractionResponse<boolean>> {
-    return await interaction.reply({ content: "ping command" });
+    const botLatency = Date.now() - interaction.createdTimestamp;
+    const apiLatency = this.client.ws.ping;
+
+    return await interaction.reply({ content: this.translate("ping", { botLatency, apiLatency }) });
   }
 }

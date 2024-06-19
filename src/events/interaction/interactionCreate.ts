@@ -13,7 +13,11 @@ export default class extends BaseEvent {
     if (!interaction.isChatInputCommand()) return;
 
     const command = this.client.commands.get(interaction.commandName);
+
     if (command === undefined) return;
+
+    const [lang] = interaction.guild.preferredLocale.split("-");
+    this.client.setLang(lang);
 
     try {
       command.run(interaction);

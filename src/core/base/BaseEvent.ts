@@ -1,9 +1,8 @@
 import { type Client } from "..";
-
 import { type BaseEventOptions } from "../types";
 
 export abstract class BaseEvent {
-  constructor(private readonly _DiscordClient: Client, private readonly _options: BaseEventOptions) {}
+  constructor(private readonly _client: Client, private readonly _options: BaseEventOptions) {}
 
   public get name(): string {
     return this._options.name;
@@ -14,7 +13,7 @@ export abstract class BaseEvent {
   }
 
   public get client(): Client {
-    return this._DiscordClient;
+    return this._client;
   }
   abstract run(...args: any[]): any | Promise<any>;
 }

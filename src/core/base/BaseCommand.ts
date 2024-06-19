@@ -32,5 +32,5 @@ export abstract class BaseCommand {
     return this._options;
   }
 
-  abstract run(message: ChatInputCommandInteraction): Promise<InteractionResponse<boolean> | void> | InteractionResponse<boolean> | void;
+  abstract run(interaction: ChatInputCommandInteraction): Promise<InteractionResponse<boolean> | void> | InteractionResponse<boolean> | void;
 }
